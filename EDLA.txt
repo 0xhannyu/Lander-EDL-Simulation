@@ -1,0 +1,31 @@
+Entry, Descent, and Landing (EDL) Algorithm Pseudocode
+
+Constants and Parameters
+gravitationalConstant = 9.81  // Acceleration due to gravity (m/s^2)
+targetAltitude = 0.0          // Target landing altitude (meters)
+
+Initial Conditions
+initialAltitude = getSpacecraftAltitude()  // Get initial altitude from sensors (meters)
+initialVelocity = getSpacecraftVelocity()  // Get initial velocity from sensors (m/s)
+
+Entry Phase
+while initialAltitude > 0:
+    calculateAtmosphericDrag()      // Calculate aerodynamic forces
+    updateSpacecraftPosition()      // Update altitude based on velocity and time
+    updateSpacecraftVelocity()      // Update velocity based on drag and gravity
+    decreaseAtmosphericDensity()    // Reduce atmospheric density for next iteration
+
+Descent Phase
+while targetAltitude - initialAltitude > safeAltitudeThreshold:
+    calculateDescentThrust()        // Calculate thrust to control descent rate
+    updateSpacecraftPosition()      // Update altitude based on velocity and time
+    updateSpacecraftVelocity()      // Update velocity based on thrust and gravity
+
+Soft Landing
+while initialAltitude > targetAltitude:
+    calculateSoftLandingThrust()    // Calculate thrust for a gentle landing
+    updateSpacecraftPosition()      // Update altitude based on velocity and time
+    updateSpacecraftVelocity()      // Update velocity based on thrust and gravity
+
+Successful Landing
+notifyGroundTeam()                // Send a message indicating successful landing
