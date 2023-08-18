@@ -2,20 +2,19 @@
 
 class Engine {
 public:
-	int engineThrust(double currentVelocity, int targetVelocity, int maxThrust, int mass) {
-
-		int a = (int) currentVelocity - targetVelocity;
-
-		int thrustReq = mass * a;
+	int engineThrust(double currentVelocity, int targetVelocity, int maxThrust) {
 
 		int ft = 0;
 
 		if(currentVelocity > targetVelocity) {
 
-			if(thrustReq > maxThrust * 5) { ft = maxThrust; }
-			else if(thrustReq < maxThrust * 5 && thrustReq > maxThrust * 3) { ft = 0.8 * maxThrust; }
-			else if(thrustReq < maxThrust * 3 && thrustReq > maxThrust) { ft = 0.6 * maxThrust; }
-			else if(thrustReq < maxThrust) { ft = thrustReq; }
+			if(currentVelocity >= (targetVelocity * 2)) { ft = maxThrust; }
+
+			else if(currentVelocity >= (targetVelocity) * 1.5 && currentVelocity < (targetVelocity * 2)) { ft = maxThrust * 0.8; }
+
+			else if(currentVelocity >= (targetVelocity) * 1.3 && currentVelocity < (targetVelocity * 1.5)) { ft = maxThrust * 0.6; }
+
+			else if(currentVelocity >= targetVelocity && currentVelocity < (targetVelocity * 1.3)) { ft = maxThrust * 0.4; }
 		}
 
 		else { ft = 0; }

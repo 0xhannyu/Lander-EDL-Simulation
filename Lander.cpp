@@ -17,6 +17,6 @@ public:
     Lander(double initialAltitude, double initialVelocity)
     {
         altitude = initialAltitude;
-        velocity = initialVelocity * 0.1;
+        velocity = initialVelocity;
     }
 };
